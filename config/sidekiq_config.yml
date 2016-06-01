@@ -1,0 +1,8 @@
+:verbose: false
+:concurrency: 15
+:timeout: 60
+:queues:
+  - [publisher, 5]
+  - [analytics, 5]
+  - [accounts, 3]
+  - [tumblr_stats, 2]

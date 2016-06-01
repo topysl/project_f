@@ -1,0 +1,62 @@
+default: &default
+#  engage:
+#    pidfile: '/data/tumblr/shared/pids/sidekiq_engage.pid'
+#    logfile: '/data/tumblr/shared/log/sidekiq_engage.log'
+#    errlog: '/data/tumblr/shared/log/sidekiq_engage.err'
+  publisher:
+    pidfile: '/data/tumblr/shared/pids/sidekiq_publisher.pid'
+    logfile: '/data/tumblr/shared/log/sidekiq_publisher.log'
+    errlog: '/data/tumblr/shared/log/sidekiq_publisher.err'
+  accounts:
+    pidfile: '/data/tumblr/shared/pids/sidekiq_accounts.pid'
+    logfile: '/data/tumblr/shared/log/sidekiq_accounts.log'
+    errlog: '/data/tumblr/shared/log/sidekiq_accounts.err'
+  analytics:
+    pidfile: '/data/tumblr/shared/pids/sidekiq_analytics.pid'
+    logfile: '/data/tumblr/shared/log/sidekiq_analytics.log'
+    errlog: '/data/tumblr/shared/log/sidekiq_analytics.err'
+  stats:
+    pidfile: '/data/tumblr/shared/pids/sidekiq_stats.pid'
+    logfile: '/data/tumblr/shared/log/sidekiq_stats.log'
+    errlog: '/data/tumblr/shared/log/sidekiq_stats.err'
+  monitoring:
+    username: 'admin'
+    password: 'WhereIsMyLove'
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+#  engage:
+#    pidfile: 'tmp/sidekiq_engage.pid'
+#    logfile: 'log/sidekiq_engage.log'
+#    errlog: 'log/sidekiq_engage.err'
+  publisher:
+    pidfile: 'tmp/sidekiq_publisher.pid'
+    logfile: 'log/sidekiq_publisher.log'
+    errlog: 'log/sidekiq_publisher.err'
+  accounts:
+    pidfile: 'tmp/sidekiq_accounts.pid'
+    logfile: 'log/sidekiq_accounts.log'
+    errlog: 'log/sidekiq_accounts.err'
+  analytics:
+    pidfile: 'tmp/sidekiq_analytics.pid'
+    logfile: 'log/sidekiq_analytics.log'
+    errlog: 'log/sidekiq_analytics.err'
+  stats:
+    pidfile: 'tmp/sidekiq_stats.pid'
+    logfile: 'log/sidekiq_stats.log'
+    errlog: 'log/sidekiq_stats.err'
+
+sandbox:
+  <<: *default
+
+integration:
+  <<: *default
+
+staging:
+  <<: *default
+
+production:
+  <<: *default

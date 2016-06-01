@@ -1,0 +1,65 @@
+#FOR ANY CHANGES TO THIS FILE, UPDATE - https://confluence.oraclecorp.com/confluence/display/SRMI/Broker+App+network+setting
+default: &default
+  can_publish: true
+  can_support_wall_app: true
+  can_support_audio: true
+  can_support_video: true
+  can_support_swf: true
+  can_support_audio_no_content: false
+  can_support_video_no_content: false
+  can_support_swf_no_content: false
+  can_support_image: true
+  can_delete_message: true
+  can_delete_reply: false
+  can_repost: false
+  can_follow: false
+  can_reply_by_multi_users: false
+  can_fetch: false
+  can_reply: false
+  has_mention: false
+  has_direct_message: false
+  multiple_stream: true
+  post_message_max_length: null
+  comment_max_length: null
+  direct_message_max_length: null
+  count_2_char_for_chinese: false
+  in_compliance_mode: true
+  short_url_length_http: null
+  short_url_length_https: null
+  analytics_enabled: true
+  analytics_backfill_enabled: false
+  analytics_fetchers: 2
+  support_external_tags: true
+  support_post_types:
+    publisher:
+      - text
+      - photo
+      - quote
+      - link
+      - chat
+      - audio
+      - video
+    quick_post:
+      - text
+      - photo
+      - quote
+      - link
+      - chat
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+sandbox:
+  <<: *default
+
+integration:
+  <<: *default
+
+staging:
+  <<: *default
+
+production:
+  <<: *default

@@ -1,0 +1,41 @@
+defaults: &defaults
+  publisher_response:
+    queue_name: 'publisher.response.queue'
+    threshold: 10
+
+development:
+  <<: *defaults
+
+sandbox:
+  <<: *defaults
+  publisher_response:
+    queue_name: 'publisher.response.queue-sandbox'
+#  engage_li_event:
+#    queue_name: 'engage-li-test4.events'
+#    threshold: 50
+
+integration:
+  <<: *defaults
+  publisher_response:
+    queue_name: 'publisher.response.queue-integration'
+
+staging:
+  <<: *defaults
+  publisher_response:
+    queue_name: 'publisher.response.queue-staging'
+    threshold: 10
+  trey:
+    queue_name: 'broker_to_trey_queue'
+    threshold: 50
+#  engage_li_event:
+#    queue_name: 'engage-li-staging.events'
+#    threshold: 100
+
+production:
+  <<: *defaults
+  trey:
+    queue_name: 'broker.calls'
+    threshold: 200
+#  engage_li_event:
+#    queue_name: 'engage-li-production.events'
+#    threshold: 200

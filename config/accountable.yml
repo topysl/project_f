@@ -1,0 +1,29 @@
+default: &default
+  schedule_time:
+    hour: 0
+    min: 0
+    sec: 1
+  app_key: <%= ENV['ACCOUNTABLE_API_KEY'] %>
+  sidekiq_options:
+    queue: :tumblr_accounts
+    retry: true
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+  app_key: <%= ENV['ACCOUNTABLE_API_KEY'] || '2eb04be2-d958-4a88-9051-5353a62f83fe' %>
+
+sandbox:
+  <<: *default
+  app_key: bdca8c50-42d3-4f7a-8d0f-7341ae2166fd
+
+integration:
+  <<: *default
+
+staging:
+  <<: *default
+
+production:
+  <<: *default

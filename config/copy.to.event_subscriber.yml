@@ -1,0 +1,59 @@
+defaults: &defaults
+  amqp_url: <%= ENV['AMQP_URL'] %>
+  nb_of_workers: 1
+  prefetch_nb: 1
+
+publish_defaults: &publish_defaults
+  <<: *defaults
+  exchange_name: <%= ENV['TUMBLR_PUBLISHING_EXCHANGE_NAME'] %>
+  queue_name: <%= ENV['TUMBLR_PUBLISHING_QUEUE_NAME'] %>
+  threshold: 10
+
+#engage_listener_defaults: &engage_listener_defaults
+#  <<: *defaults
+#  exchange_name: <%= ENV['ENGAGE_READY_EXCHANGE_NAME'] %>
+#  queue_name: <%= ENV['TUMBLR_ENGAGE_READY_QUEUE_NAME'] %>
+
+development:
+  publisher:
+    <<: *publish_defaults
+    exchange_name: <%= ENV['TUMBLR_PUBLISHING_EXCHANGE_NAME'] || 'publisher.publish.tumblr-development' %>
+    queue_name: <%= ENV['TUMBLR_PUBLISHING_QUEUE_NAME'] || 'publisher.publish.tumblr.queue-development' %>
+#  engage_listener:
+#    <<: *engage_listener_defaults
+#    exchange_name: <%= ENV['ENGAGE_READY_EXCHANGE_NAME'] || 'engage_broker_ready' %>
+#    queue_name:  <%= ENV['TUMBLR_ENGAGE_READY_QUEUE_NAME'] || 'engage_listener.tumblr.queue-development' %>
+
+sandbox:
+  publisher:
+    <<: *publish_defaults
+    exchange_name: 'publisher.publish.tumblr-sandbox'
+    queue_name: 'publisher.publish.tumblr.queue-sandbox'
+    host: 'int-rabbitmq.rabbitmq-staging.cloud.vitrue.com'
+    port: 5672
+    pass: 'ThisIsNotProd'
+    user: 'vitrue'
+#  engage_listener:
+#    <<: *engage_listener_defaults
+#    exchange_name: 'test4.engage_broker_ready'
+#    queue_name: 'engage_listener.tumblr.queue-sandbox'
+#    host: 'int-rabbitmq.rabbitmq-staging.cloud.vitrue.com'
+#    port: 5672
+#    pass: 'ThisIsNotProd'
+#    user: 'vitrue'
+
+integration:
+  publisher:
+    <<: *publish_defaults
+
+staging:
+  publisher:
+    <<: *publish_defaults
+#  engage_listener:
+#    <<: *engage_listener_defaults
+
+production:
+  publisher:
+    <<: *publish_defaults
+#  engage_listener:
+#    <<: *engage_listener_defaults

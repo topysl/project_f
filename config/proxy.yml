@@ -1,0 +1,27 @@
+defaults: &defaults
+  http_proxy_url: #'migration-test-proxy.vitrue.comsa:80'
+  https_proxy_url: #'migration-test-proxy.vitrue.comsa:80'
+  no_proxy: #'hosta hostb'
+
+development:
+  http_proxy_url: #'migration-test-proxy.vitrue.comsa:80'
+  https_proxy_url: #'migration-test-proxy.vitrue.comsa:80'
+  no_proxy: #'hosta hostb'
+
+test:
+  http_proxy_url: #'migration-test-proxy.vitrue.comsa:80'
+  https_proxy_url: #'migration-test-proxy.vitrue.comsa:80'
+  no_proxy: #'hosta hostb'
+
+sandbox:
+  <<: *defaults
+
+integration:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
+

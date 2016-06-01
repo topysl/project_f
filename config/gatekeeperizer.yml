@@ -1,0 +1,39 @@
+default: &default
+  token_scope: internal
+  oauth_url: <%= ENV['GATEKEEPER_SERVER_URL'] %>
+  client_id: 9eb55b33306244732199be0666ef71bf5b63e9f8badf677ca43be15d47c39291
+  client_secret: 2dcdb5710cec0ec7a6d8f23eadfbddb6b05aa64649eeff83b86eac1a7988225b
+  namespace: tumblr
+  white_list:
+    - /hi
+    - /app-check
+    - /api/oauth/auth_code
+    - /api/oauth/authorize
+    - /api/application.js
+    - /api/application.css
+    - /sidekiq
+    - /api/network_settings
+    - /stats
+
+test:
+  <<: *default
+
+sandbox:
+  <<: *default
+
+integration:
+  <<: *default
+  client_id: 49d91549f7b3437bf8bbdf14cdc59b879f404d5a1e938dd2bfb96ff1f03d7fea
+  client_secret: 7391ec1b31d6139727f52726105f3083ce498791eddc10fab4afc7d3affc2d24
+
+development:
+  <<: *default
+  oauth_url: <%= ENV['GATEKEEPER_SERVER_URL'] || 'https://gatekeeper.staging.cloud.vitrue.com/' %>
+
+staging:
+  <<: *default
+
+production:
+  <<: *default
+  client_id: 200efbbcf6b4733fe17f21570415b6eb243339358922a4eccbe7a80f354a0f45
+  client_secret: 3843ac91bc142ae68b3d7bdbe5b3b3f41e1f1ee170d1dc9f3834ff7b92068379

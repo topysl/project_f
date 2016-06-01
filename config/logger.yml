@@ -1,0 +1,5 @@
+app_level: INFO
+engage_worker_level: INFO
+accounts_worker_level: INFO
+publisher_worker_level: INFO
+analytics_worker_level: INFO

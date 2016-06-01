@@ -1,0 +1,21 @@
+default: &default
+  page_fetcher: false
+  post_fetcher: false
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+sandbox:
+  <<: *default
+
+integration:
+  <<: *default
+
+staging:
+  <<: *default
+
+production:
+  <<: *default

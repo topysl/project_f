@@ -1,0 +1,13 @@
+# for task assets deploy (Rakefile)
+# TBD
+aws_access_key_id: 'AKIAJOXCPVZ4P2KPHBNA'
+aws_secret_access_key: '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'
+s3_bucket: platform-cdn
+s3_url: https://s3.amazonaws.com/platform-cdn
+s3_assets_folder: oracle-tumblr/assets
+local_assets_folder: public/assets
+local_js: public/assets/application.js
+local_css: public/assets/application.css
+remote_files:
+  - application.js
+  - application.css

@@ -1,0 +1,59 @@
+default: &default
+  type: tumblr
+  site_url: <%= ENV['TUMBLR_BROKER_URL'] %>
+  redirect_url: <%= "#{ENV['TUMBLR_BROKER_URL']}/api/oauth/auth_code" %>
+  publisher_url: <%= ENV['PUBLISHER_SERVER_URL'] %>
+  client_id: Of6wM0qfLIoKGQykHBLfOwf3gwvLV92BX3E4KMG3GBZTITvBTo
+  client_secret: Kl3qQcC2VygvpbJGTEDxn2wMTMkUF8fAmswwPoO5WeiuizI1QR
+  read_client_id: Of6wM0qfLIoKGQykHBLfOwf3gwvLV92BX3E4KMG3GBZTITvBTo
+  read_client_secret: Kl3qQcC2VygvpbJGTEDxn2wMTMkUF8fAmswwPoO5WeiuizI1QR
+  network_url: http://www.tumblr.com
+  srma_ui_url: <%= ENV['SRMA_UI_URL'] %>
+  srma_api_url: <%= ENV['SRMA_API_URL'] %>
+  srma_api_version: <%= ENV['SRMA_API_VERSION'] || 3 %>
+  accounts_redirect_url: <%= "#{ENV['SRMA_UI_URL']}/plugin_stream_token" %>
+  max_channel_count: 100
+  channel_url: http://www.%{identifier}.tumblr.com
+  time_boundary:
+    hour: 0
+    minute: 0
+    second: 0
+    time_zone: "-07:00"
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+sandbox:
+  <<: *default
+  pid_directory: /data/tumblr/shared/pids
+  client_id: HA9mwloRZ3vrEqaoUGJb6IawgzqmI2qlDTNAlLm4WmLCB1SonQ
+  client_secret: JhF6yo41TLzmAHbQhwkgsVp3glcNMOutv86HKXBRfXUHNElXcA
+  read_client_id: HA9mwloRZ3vrEqaoUGJb6IawgzqmI2qlDTNAlLm4WmLCB1SonQ
+  read_client_secret: JhF6yo41TLzmAHbQhwkgsVp3glcNMOutv86HKXBRfXUHNElXcA
+
+integration:
+  <<: *default
+  pid_directory: /data/tumblr/shared/pids
+  client_id: D7GraQkMaUboPP9pDqK0RP4Q0oX87nmvL08OdwvdsbJ1QXnKy7
+  client_secret: xGUeqvfjsjVxK3WFLDUodofmQitvkrUHUnungbZUE19bZCoSEB
+  read_client_id: D7GraQkMaUboPP9pDqK0RP4Q0oX87nmvL08OdwvdsbJ1QXnKy7
+  read_client_secret: xGUeqvfjsjVxK3WFLDUodofmQitvkrUHUnungbZUE19bZCoSEB
+
+staging:
+  <<: *default
+  pid_directory: /data/tumblr/shared/pids
+  client_id: f6JtbhIjRUR8mZc0cWwcBI1oVvVo5EfrOci4AZU402cnK3j8ir
+  client_secret: U4yXFAuC66QDYgfbY04d9hsfBVIiQjZSOz82kG1etEIBt8sz0M
+  read_client_id: f6JtbhIjRUR8mZc0cWwcBI1oVvVo5EfrOci4AZU402cnK3j8ir
+  read_client_secret: U4yXFAuC66QDYgfbY04d9hsfBVIiQjZSOz82kG1etEIBt8sz0M
+
+production:
+  <<: *default
+  pid_directory: /data/tumblr/shared/pids
+  client_id: FKkqzIdXlCIkqQrGmQmkqKK2WMcENLbYZdbB4X5gqCbjthPteV
+  client_secret: NgZ1jblZst467gtqRRJKz2Iukv09tudt5DB5vs1mS8yn9mo6VE
+  read_client_id: FKkqzIdXlCIkqQrGmQmkqKK2WMcENLbYZdbB4X5gqCbjthPteV
+  read_client_secret: NgZ1jblZst467gtqRRJKz2Iukv09tudt5DB5vs1mS8yn9mo6VE

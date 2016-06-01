@@ -1,0 +1,48 @@
+defaults: &defaults
+  host: <%= ENV['RABBITMQ_HOST'] %>
+  port: <%= ENV['RABBITMQ_PORT'] %>
+  vhost: '/'
+  user: guest
+  pass: guest
+  queues:
+    publisher: <%= ENV['TUMBLR_PUBLISHING_EXCHANGE_NAME'] %>
+    publisher_response: <%= ENV['PUBLISHING_RESPONSE_EXCHANGE_NAME'] %>
+#    engage_events: <%= ENV['TUMBLR_ENGAGE_EXCHANGE_NAME'] %>
+
+test:
+  <<: *defaults
+
+development:
+  <<: *defaults
+  host: <%= ENV['RABBITMQ_HOST'] || 'localhost'%>
+  port: <%= ENV['RABBITMQ_PORT'] || 5672 %>
+  queues:
+    publisher: <%= ENV['TUMBLR_PUBLISHING_EXCHANGE_NAME'] || 'publisher.publish.tumblr-development' %>
+    publisher_response: <%= ENV['PUBLISHING_RESPONSE_EXCHANGE_NAME'] || 'publisher.response' %>
+#    engage_events: <%= ENV['TUMBLR_ENGAGE_EXCHANGE_NAME'] || 'tumblr_broker.events' %>
+
+sandbox:
+  <<: *defaults
+  host: int-rabbitmq.rabbitmq-staging.cloud.vitrue.com
+  vhost: '/'
+  user: vitrue
+  pass: ThisIsNotProd
+  queues:
+    publisher: publisher.publish.tumblr-sandbox
+    publisher_response: publisher.response-sandbox
+#    engage_events: tumblr_sandbox.events
+
+integration:
+  <<: *defaults
+  user: vitrue
+  pass: ThisIsNotProd
+
+staging:
+  <<: *defaults
+  user: vitrue
+  pass: ThisIsNotProd
+
+production:
+  <<: *defaults
+  user: vitrue
+  pass: WhereIsTheBacon
