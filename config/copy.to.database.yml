@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgres
+  encoding: unicode
+  database: fb_development
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost
+
+test:
+  <<: *default
+  database: fb_test
+
+development:
+  <<: *defaulttest:
+  <<: *default
+  database: wechat_test
+
+staging:
+  <<: *default
+
+integration:
+  <<: *default
+
+production:
+  <<: *default
